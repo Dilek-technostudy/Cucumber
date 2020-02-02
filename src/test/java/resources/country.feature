@@ -6,6 +6,13 @@ Feature: Create a country
     And Click on setup on top
     And Click on parameters
     And Click on countries
+    And Click on plus icon
+    And Type in the name "CucumberCucumber"
+    And Type in the code "CucumberAAA"
+    When Click on save button
+    Then "CucumberCucumber" should be displayed
+
+
 
 
 

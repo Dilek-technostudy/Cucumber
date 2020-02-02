@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
-public class leftNav {
+public class leftNav extends  AbstractClass{
 
     private WebDriver driver;
 
@@ -27,20 +27,36 @@ public class leftNav {
     @FindBy(xpath = "//span[contains(text(),'Citizenships')]")
     private WebElement buttonCitizenship;
 
-    public void clickondropdownSetup() {
-        dropdownSetup.click();
+    @FindBy (xpath = "//span[text()='Subject Categories']")
+    private WebElement buttonSubjectCategories;
+
+    public void clickondropdownSetup(){
+        clickFunction( dropdownSetup );
     }
 
-    public void clickondropdownParameters() {
-        dropdownParameters.click();
+    public void clickondropdownParameters(){
+        clickFunction( dropdownParameters );
     }
 
-    public void clickonbuttonCountries() {
-        buttonCountries.click();
+    public void clickonbuttonCountries(){
+        clickFunction(buttonCountries);
     }
 
-    public void clickbuttonCitizenship() {
-        buttonCitizenship.click();
-
+    public void clickbuttonCitizenship(){
+        clickFunction(buttonCitizenship);
     }
+
+    public void clickSubjectCategories(){
+        clickFunction(buttonSubjectCategories);
+    }
+
+    //    return the current websiteURL
+    public String getURL(){
+        String url = driver.getCurrentUrl();
+        return url;
+    }
+
+
 }
+
+

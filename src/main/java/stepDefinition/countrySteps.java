@@ -1,8 +1,12 @@
 package stepDefinition;
+import PageObjectModel.applicationPage;
+import PageObjectModel.countryPage;
 import PageObjectModel.leftNav;
 import PageObjectModel.signInPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 
 import org.openqa.selenium.By;
@@ -16,16 +20,17 @@ import java.util.concurrent.TimeUnit;
 
 public class countrySteps {
     WebDriver driver;
-    signInPage sip =new signInPage();
+    signInPage sip = new signInPage();
     leftNav lv = new leftNav();
-
+    countryPage cp = new countryPage();
+    applicationPage ap = new applicationPage();
 
     @Given("^Go to mersys website$")
     public void go_to_mersys_website() throws Throwable {
         driver = Driver.getDriver();
         driver.manage().window().maximize();
-        driver.get( "https://test-basqar.mersys.io" );
-        driver.manage().timeouts().implicitlyWait( 20,TimeUnit.SECONDS );
+        driver.get("https://test-basqar.mersys.io");
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
 
 
@@ -36,7 +41,7 @@ public class countrySteps {
         sip.typeIninputUserName();
         sip.typeIninputPassword();
         sip.clickonbuttonLogin();
-}
+    }
 
 
     @Given("^Click on setup on top$")
@@ -54,6 +59,32 @@ public class countrySteps {
         lv.clickonbuttonCountries();
     }
 
+    @Given("^Click on plus icon$")
+    public void click_on_plus_icon() throws Throwable {
+        ap.clickPlusButton();
+    }
+
+    @Given("^Type in the name \"(.*?)\"$")
+    public void type_in_the_name(String name) throws Throwable {
+        cp.typeIntheCountryInputName(name);
+    }
 
 
+
+    @Given("^Type in the code \"(.*?)\"$")
+    public void type_in_the_code(String code) throws Throwable {
+        cp.typeInthecountryInputCode(code);
+    }
+
+    @When("^Click on save button$")
+    public void click_on_save_button() throws Throwable {
+        ap.clickSaveButton();
+    }
+
+    @Then("^\"(.*?)\" should be displayed$")
+    public void should_be_displayed(String name) throws Throwable {
+        ap.nameIsCreated(name);
+
+
+    }
 }

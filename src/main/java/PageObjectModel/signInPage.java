@@ -23,9 +23,9 @@ import utilities.Driver;
  */
 
 
-public class signInPage {
+public class signInPage extends AbstractClass {
 
-        WebDriver driver;
+         private WebDriver driver;
         public signInPage(){
             driver =Driver.getDriver();
             PageFactory.initElements(driver,this);
@@ -42,15 +42,30 @@ public class signInPage {
     private WebElement buttonLogin;
 
     public void typeIninputUserName(){
-        inputUserName.sendKeys( "nigeria_tenant_admin" );
+        sendkeysFunction(inputUserName ,"nigeria_tenant_admin" );
     }
 
     public void typeIninputPassword(){
-        inputPassword.sendKeys( "TnvLOl54WxR75vylop2A" );
+        sendkeysFunction(inputPassword ,"TnvLOl54WxR75vylop2A" );
     }
 
     public void clickonbuttonLogin(){
-        buttonLogin.click();
+        clickFunction(buttonLogin);
     }
 
 }
+/*
+        Advantage of Page Factory
+                1)Code reusability – We could achieve code reusability
+            by writing the code once and use it in different tests.
+                2)Code maintainability – There is a clean separation
+           between test code and page specific code such as
+           locators and layout which becomes very easy to maintain code.
+           Code changes only on Page Object Classes when a UI change occurs.
+           It enhances test maintenance and reduces code duplication.
+                3)Object Repository – Each page will be defined as a java class.
+           All the fields in the page will be defined in an interface as members.
+           The class will then implement the interface.
+                4)Readability – Improves readability due to clean separation between
+           test code and page specific code
+ */
