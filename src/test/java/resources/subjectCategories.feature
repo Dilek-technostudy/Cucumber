@@ -5,9 +5,26 @@ Feature: Create a Country
     And Type the username and password and click on login button
     And Click on setup on top
     And Click on parameters
-    When Click on subject categories
-    Then Subject Categories page should be displayed
+    And Click on countries
+    And Click on plus icon
+    And Type in the Name "<CucumberC>"
+    And Type in the code "<code>"
+    When Click on save button
+    Then "<CucumberC>" should be displayed
+    And Remove the data "<CucumberC>"
+    Then Verify data is removed "<CucumberC>"
 
+    Examples:
+      |CucumberCountry|code|
+      |mycuke               |  asd  |
+      |mycuke2               |  sdf  |
+      |mycuke3               |  dfg  |
+
+
+#   Advantage of cucumber
+#     Understandable for everyone in the team
+#     Report will understandable for everyone as well
+#
 
 
 

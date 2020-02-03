@@ -27,11 +27,21 @@ public class leftNav extends  AbstractClass{
     @FindBy(xpath = "//span[contains(text(),'Citizenships')]")
     private WebElement buttonCitizenship;
 
+    @FindBy(xpath="//span[contains(text(),'Nationalities')]")
+    private WebElement buttonNatioanlity;
+
     @FindBy (xpath = "//span[text()='Subject Categories']")
     private WebElement buttonSubjectCategories;
 
+    @FindBy (xpath = "//span[contains(text(), 'Cities')]")
+    private WebElement buttonCities;
+
     public void clickondropdownSetup(){
+
         clickFunction( dropdownSetup );
+    }
+    public void clickOnbuttonNatioanlity(){
+        clickFunction( buttonNatioanlity );
     }
 
     public void clickondropdownParameters(){
@@ -49,6 +59,8 @@ public class leftNav extends  AbstractClass{
     public void clickSubjectCategories(){
         clickFunction(buttonSubjectCategories);
     }
+
+    public void clickOnbuttonCity(){clickFunction(buttonCities);}
 
     //    return the current websiteURL
     public String getURL(){

@@ -11,46 +11,63 @@ import java.util.List;
 
 public class applicationPage extends AbstractClass {
 
-    private WebDriver driver ;
+    private WebDriver driver;
 
 
-    public applicationPage(){
+    public applicationPage() {
 
         driver = Driver.getDriver();
-        PageFactory.initElements( driver , this );
+        PageFactory.initElements(driver, this);
 
     }
 
-    @FindBy(css = "svg[data-icon='plus']" )
+    @FindBy(css = "svg[data-icon='plus']")
     private WebElement plusButton;
 
-    @FindBy(xpath="//span[text()='Save']")
+    @FindBy(xpath = "//span[text()='Save']")
     private WebElement saveButton;
 
-    @FindBy(xpath="//div[contains(text(),'successfully created')]")
+    @FindBy(xpath = "//div[contains(text(),'successfully created')]")
     private WebElement successfulMessage;
+
+    @FindBy(xpath = "//span[text()=' Yes ']")
+    private WebElement buttonYes;
 
     //  find all is working like driver.findElements
     @FindAll({
-            @FindBy(xpath="//tbody//tr//td[2]")
-    }  )
+            @FindBy(xpath = "//tbody//tr//td[2]")
+    })
     private List<WebElement> tableListofNames;
 
-    public void clickPlusButton(){
-        clickFunction( plusButton );
+    @FindAll({
+            @FindBy(xpath="//ms-delete-button//button")
+    })
+    private List<WebElement> listOfDeleteButtons;
+
+    public void clickPlusButton() {
+        clickFunction(plusButton);
     }
 
-    public void clickSaveButton(){
-        clickFunction( saveButton );
+    public void clickSaveButton() {
+        clickFunction(saveButton);
+    }
+
+    public void clickYes() {
+        clickFunction(buttonYes);
     }
 
     public void nameIsCreated(String value) throws InterruptedException {
 
-        waitUntilVisibility(successfulMessage);
-        waitUntilInVisibility( successfulMessage );
+        Thread.sleep( 2000 );
         System.out.println(tableListofNames.size()+"<-------------");
         verifyCreated( tableListofNames ,value );
     }
 
+    public void deletingElement(String value) {
+        deleteFunctionality(tableListofNames, listOfDeleteButtons, value, buttonYes);
+    }
+    public void verifingDeleted(String value) throws InterruptedException{
+        verifyDeletedAbstractClass( tableListofNames , value );
+    }
 
 }

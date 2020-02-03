@@ -11,6 +11,8 @@ Feature: Create a country
     And Type in the code "CucumberAAA"
     When Click on save button
     Then "CucumberCucumber" should be displayed
+    And Remove the data "CucumberCucumber"
+    Then Verify data is removed "CucumberCucumber"
 
 
 

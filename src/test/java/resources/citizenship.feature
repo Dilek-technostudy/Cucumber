@@ -7,8 +7,10 @@ Feature: Create Citizenship
     And Click on parameters
     And Click on citizenship
     And Click on plus icon
-    And Type the citizenship name  "CucumberCity"
+    And Type the citizenship name  "CucumCity"
     And Type the shortName "Cucity"
     When Click on save button
-    Then "CucumberCiy" should be displayed
+    Then "CucumCity" should be displayed
+    And Remove the data "CucumCity"
+    Then Verify data is removed "CucumCity"
 
